@@ -10,16 +10,24 @@ link_directories(
 	${CMAKE_SOURCE_DIR}/contrib/lib
 )
 
-add_executable((RayTracerOTW
+add_executable(RayTracerOTW
 
 	src/main.cpp
+	
+	src/ConsoleMenu.cpp
+	src/ConsoleMenu.h
+	
+	src/Render.cpp
+	src/Render.h
+
+
 )
 
-target_link_libraries((RayTracerOTW SDL2)
+target_link_libraries(RayTracerOTW SDL2)
 
-add_custom_command(TARGET (RayTracerOTW
+add_custom_command(TARGET RayTracerOTW
 	POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy
 	"${PROJECT_SOURCE_DIR}/contrib/lib/SDL2.dll"
-	$<TARGET_FILE_DIR:(RayTracerOTW>
+	$<TARGET_FILE_DIR:RayTracerOTW>
 )
